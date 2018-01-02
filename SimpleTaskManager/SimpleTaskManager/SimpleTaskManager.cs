@@ -19,40 +19,11 @@ namespace SimpleTaskManager
         public SimpleTaskManager()
         {
             InitializeComponent();
-
-            for(int i = 0; i < taskList.Count; i++)
-            {
-                checkBoxes.Add(new CheckBox());
-                CheckBox cb = checkBoxes[i];
-
-                cb.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-|               System.Windows.Forms.AnchorStyles.Right)));
-                cb.AutoSize = true;
-                cb.Location = new System.Drawing.Point(3, 20 * i + 32);
-                cb.Size = new System.Drawing.Size(69, 21);
-                cb.TabIndex = 1;
-                cb.Text = taskList[i].name;
-                cb.UseVisualStyleBackColor = true;
-                cb.Click += new System.EventHandler(this.checkBoxes_Click);
-
-                panel.Controls.Add(checkBoxes[i]);
-            }
-        }
-
-        private void checkBoxes_Click(object sender, EventArgs e)
-        {
-            MouseEventArgs me = (MouseEventArgs)e;
-
-            if (me.Button == MouseButtons.Right)
-                Debug.WriteLine("Rightclick!");
-
-            if (me.Button == MouseButtons.Left)
-                Debug.WriteLine("Leftclick!");
         }
 
         private void newTaskButton_Click(object sender, EventArgs e)
         {
-            int maxY = 30;
+            int maxY = 36;
 
             if(checkBoxes.Count > 0)
                 maxY = checkBoxes.Last().Location.Y;
@@ -63,15 +34,15 @@ namespace SimpleTaskManager
             checkBoxes.Add(new CheckBox());
             CheckBox newCheckBox = checkBoxes.Last();
 
-            newCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-|           System.Windows.Forms.AnchorStyles.Right)));
+            newCheckBox.Anchor = ((((AnchorStyles.Top | AnchorStyles.Left) | AnchorStyles.Right)));
             newCheckBox.AutoSize = true;
-            newCheckBox.Location = new System.Drawing.Point(3, maxY + 20);
-            newCheckBox.Size = new System.Drawing.Size(69, 21);
+            newCheckBox.Location = new Point(3, maxY + 20);
+            newCheckBox.Size = new Size(69, 21);
             newCheckBox.TabIndex = 1;
             newCheckBox.Text = newTask.name;
+            newCheckBox.ForeColor = Color.White;
             newCheckBox.UseVisualStyleBackColor = true;
-            newCheckBox.Click += new System.EventHandler(this.checkBoxes_Click);
+            newCheckBox.MouseDown += new MouseEventHandler(this.checkBoxes_MouseDown);
 
             panel.Controls.Add(newCheckBox);
 
@@ -84,6 +55,25 @@ namespace SimpleTaskManager
                 newTaskButton.Enabled = true;
             else
                 newTaskButton.Enabled = false;
+        }
+
+        private void checkBoxes_MouseDown(object sender, MouseEventArgs e)
+        {
+            CheckBox clickedCheckBox = (CheckBox)sender;
+
+            if (e.Button == MouseButtons.Right)
+            {
+                clickedCheckBox.Checked = true;
+                clickedCheckBox.Enabled = false;
+            }
+            else if (e.Button == MouseButtons.Left && clickedCheckBox.ForeColor == Color.Gray)
+            {
+                clickedCheckBox.ForeColor = Color.Black;
+            }
+            else
+            {
+                clickedCheckBox.ForeColor = Color.Gray;
+            }
         }
     }
 }

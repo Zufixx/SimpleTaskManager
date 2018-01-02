@@ -38,14 +38,20 @@
             // 
             this.newTaskButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.newTaskButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(90)))));
             this.newTaskButton.Enabled = false;
+            this.newTaskButton.ForeColor = System.Drawing.Color.White;
             this.newTaskButton.Location = new System.Drawing.Point(4, 32);
             this.newTaskButton.Name = "newTaskButton";
-            this.newTaskButton.Size = new System.Drawing.Size(352, 23);
+            this.newTaskButton.Size = new System.Drawing.Size(354, 30);
             this.newTaskButton.TabIndex = 0;
             this.newTaskButton.Text = "New Task";
-            this.newTaskButton.UseVisualStyleBackColor = true;
+            this.newTaskButton.UseVisualStyleBackColor = false;
             this.newTaskButton.Click += new System.EventHandler(this.newTaskButton_Click);
+            this.newTaskButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.newTaskButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(90)))));
+            this.newTaskButton.FlatAppearance.BorderSize = 1;
+            this.newTaskButton.ForeColor = System.Drawing.Color.White;
             // 
             // panel
             // 
@@ -53,8 +59,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel.AutoScroll = true;
-            this.panel.BackColor = System.Drawing.SystemColors.Control;
-            this.panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel.BackColor = System.Drawing.Color.Transparent;
             this.panel.Controls.Add(this.taskNameBox);
             this.panel.Controls.Add(this.newTaskButton);
             this.panel.Location = new System.Drawing.Point(12, 12);
@@ -68,7 +73,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.taskNameBox.Location = new System.Drawing.Point(4, 4);
             this.taskNameBox.Name = "taskNameBox";
-            this.taskNameBox.Size = new System.Drawing.Size(352, 22);
+            this.taskNameBox.Size = new System.Drawing.Size(354, 22);
             this.taskNameBox.TabIndex = 1;
             this.taskNameBox.TextChanged += new System.EventHandler(this.taskNameBox_TextChanged);
             // 
@@ -76,6 +81,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(60)))));
             this.ClientSize = new System.Drawing.Size(385, 465);
             this.Controls.Add(this.panel);
             this.Name = "SimpleTaskManager";
